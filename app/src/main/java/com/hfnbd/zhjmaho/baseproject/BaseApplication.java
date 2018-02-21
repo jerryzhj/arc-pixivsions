@@ -3,14 +3,9 @@ package com.hfnbd.zhjmaho.baseproject;
 import android.app.Application;
 
 import com.orhanobut.logger.AndroidLogAdapter;
-import com.orhanobut.logger.CsvFormatStrategy;
-import com.orhanobut.logger.DiskLogAdapter;
 import com.orhanobut.logger.FormatStrategy;
 import com.orhanobut.logger.Logger;
 import com.orhanobut.logger.PrettyFormatStrategy;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 
 /**
  * Created by ZHJMAHO on 2018/2/17
