@@ -1,0 +1,102 @@
+apply plugin: 'com.android.application'
+
+project.ext {
+    supportLibraryVersion = "26.1.0"
+    androidArchVersion = "1.1.0"
+    butterKnifeVersion = "8.8.1"
+    rxJavaVersion = "2.1.0"
+    rxAndroidVersion = "2.0.1"
+    timberVersion = "4.5.1"
+    priorityJobQueueVersion = "2.0.1"
+    playServicesVersion = "11.4.2"
+    retrofitVersion = "2.1.0"
+    okHttpVersion = "3.4.1"
+    rxRelayVersion = "2.0.0"
+    rxLintVersion = "1.6"
+    glide = "4.3.1"
+}
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.hfnbd.zhjmaho.baseproject"
+        minSdkVersion 14
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            android.applicationVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName = "appname_${defaultConfig.versionName}_${releaseTime()}.apk"
+                }
+            }
+        }
+    }
+    buildToolsVersion '26.0.2'
+}
+
+static def releaseTime() {
+    return new Date().format("yyyyMMdd", TimeZone.getTimeZone("UTC"))
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "com.android.support:appcompat-v7:$project.supportLibraryVersion"
+    implementation "com.android.support:cardview-v7:$project.supportLibraryVersion"
+    implementation "com.android.support:appcompat-v7:$project.supportLibraryVersion"
+    implementation "com.android.support:design:$project.supportLibraryVersion"
+    implementation "com.android.support:support-v4:$project.supportLibraryVersion"
+    implementation "com.android.support:support-vector-drawable:$project.supportLibraryVersion"
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    // ButterKnife
+    implementation "com.jakewharton:butterknife:$project.butterKnifeVersion"
+    implementation 'com.android.support:support-v4:26.1.0'
+    annotationProcessor "com.jakewharton:butterknife-compiler:$project.butterKnifeVersion"
+
+    // ReactiveX
+    implementation "io.reactivex.rxjava2:rxjava:$project.rxJavaVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$project.rxAndroidVersion"
+
+    // Timber
+    implementation "com.jakewharton.timber:timber:$project.timberVersion"
+
+    // RecyclerView
+    implementation "com.android.support:recyclerview-v7:$project.supportLibraryVersion"
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$project.retrofitVersion"
+
+    // GSON Converter
+    implementation "com.squareup.retrofit2:converter-gson:$project.retrofitVersion"
+
+    // OkHttp Logging Interceptor
+    implementation "com.squareup.okhttp3:okhttp:$project.okHttpVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$project.okHttpVersion"
+
+    // Room Database
+    implementation "android.arch.persistence.room:runtime:1.0.0"
+    implementation "android.arch.persistence.room:rxjava2:1.0.0"
+    annotationProcessor "android.arch.persistence.room:compiler:1.0.0"
+
+    //lifecycle
+    implementation "android.arch.lifecycle:extensions:$project.androidArchVersion"
+    testImplementation "android.arch.core:core-testing:$project.androidArchVersion"
+    implementation "android.arch.lifecycle:reactivestreams:$project.androidArchVersion"
+    // RxRelay
+    implementation "com.jakewharton.rxrelay2:rxrelay:$project.rxRelayVersion"
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    //glide
+    implementation "com.github.bumptech.glide:glide:${project.glide}"
+    annotationProcessor "com.github.bumptech.glide:compiler:${project.glide}"
+    implementation "com.github.bumptech.glide:okhttp3-integration:${project.glide}"
+    implementation "com.github.bumptech.glide:recyclerview-integration:${project.glide}"
+    implementation 'com.orhanobut:logger:2.1.1'
+}
