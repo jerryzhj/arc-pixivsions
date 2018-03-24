@@ -53,12 +53,7 @@
     @retrofit.http.* <methods>;
 }
 -keep class com.bumptech.glide.GeneratedAppGlideModuleImpl
--dontwarn org.apache.poi.**
--keep class org.apache.poi.**{*;}
-
--dontwarn com.langfen.zhjmaho.xmltoform.**
--keep class com.langfen.zhjmaho.xmltoform.**{*;}
-
+-keepresourcexmlelements manifest/application/meta-data@value=GlideModule
 -keep class de.greenrobot.dao.** {*;}
 -keepclassmembers class * extends de.greenrobot.dao.AbstractDao {
     public static java.lang.String TABLENAME;
@@ -71,6 +66,9 @@
     **[] $VALUES;
     public *;
 }
+
+-keep public class  extends com.bumptech.glide.module.AppGlideModule
+-keep class com.bumptech.glide.GeneratedAppGlideModuleImpl
 
 -dontwarn okhttp3.**
 -dontwarn okio.**
